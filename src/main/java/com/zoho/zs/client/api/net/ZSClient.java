@@ -15,7 +15,7 @@ public class ZSClient
 
 	static String version = "v1";
 
-	static String authtoken;
+	static String oauthtoken;
 
 	static String organizationId;
 
@@ -37,13 +37,13 @@ public class ZSClient
 		ZSClient.version = version;
 	}
 
-	public static void setAuthtoken(String authtoken) throws Exception
+	public static void setAuthtoken(String oauthtoken) throws Exception
 	{
-		if (authtoken == null || authtoken.trim().isEmpty())
+		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{
-			throw new Exception("AuthToken to speak with Zoho Subscriptions is not set. Please set the authtoken in System property");
+			throw new Exception("AuthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
 		}
-		ZSClient.authtoken = authtoken;
+		ZSClient.oauthtoken = oauthtoken;
 	}
 
 	public static void setOrganizationId(String organizationId)
@@ -73,11 +73,11 @@ public class ZSClient
 
 	protected static String getAuthtoken() throws Exception
 	{
-		if (authtoken == null || authtoken.trim().isEmpty())
+		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{
-			throw new APIConnectionException("AuthToken to speak with Zoho Subscriptions is not set. Please set the authtoken in System property");
+			throw new APIConnectionException("AuthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
 		}
-		return authtoken;
+		return oauthtoken;
 	}
 
 	protected static String getOrganizationId()
