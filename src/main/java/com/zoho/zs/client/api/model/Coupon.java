@@ -58,6 +58,8 @@ public class Coupon extends Resource
 	@JsonIgnore
 	Date updatedTime;
 
+	Integer duration;
+
 	public static Coupon retrieve(String id) throws ZSAPIException
 	{
 		return ResourceUtil.process(RequestMethod.GET, instancePath(Coupon.class, id), Coupon.class);
@@ -280,6 +282,16 @@ public class Coupon extends Resource
 	public Date getUpdatedTime()
 	{
 		return updatedTime;
+	}
+
+	public void setDuration(Integer duration)
+	{
+		this.duration = duration;
+	}
+
+	public Integer getDuration()
+	{
+		return duration;
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)

@@ -42,7 +42,7 @@ public class CustomField extends Resource {
         return customFieldId;
     }
 
-    public void setCustomfieldId(String customFieldId) {
+    private void setCustomfieldId(String customFieldId) {
         this.customFieldId = customFieldId;
     }
 

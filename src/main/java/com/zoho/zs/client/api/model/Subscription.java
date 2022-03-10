@@ -24,7 +24,6 @@ public class Subscription extends Resource
 
 	Card card;
 
-	InAppPayment inAppPayment;
 
 	String cardId;
 
@@ -304,16 +303,6 @@ public class Subscription extends Resource
 	public Card getCard()
 	{
 		return card;
-	}
-
-	public InAppPayment getInAppPayment()
-	{
-		return inAppPayment;
-	}
-
-	public void setInAppPayment(InAppPayment inAppPayment)
-	{
-		this.inAppPayment = inAppPayment;
 	}
 
 	public void setCardId(String cardId)

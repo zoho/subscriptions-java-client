@@ -47,6 +47,12 @@ public class Addon extends Resource
 
 	Boolean isTaxable;
 
+	Boolean showInWidget;
+
+	Boolean showInPortal;
+
+	String description;
+
 	@JsonIgnore
 	String taxName;
 	@JsonIgnore
@@ -69,6 +75,10 @@ public class Addon extends Resource
 
 	@JsonIgnore
 	Date updatedTime;
+
+	List<CustomField> customFields;
+
+	List<Tag> tags;
 
 	public static Addon retrieve(String id) throws ZSAPIException
 	{
@@ -364,6 +374,30 @@ public class Addon extends Resource
 		return updatedTime;
 	}
 
+	public void setShowInWidget(Boolean showInWidget) {
+		this.showInWidget = showInWidget;
+	}
+
+	public Boolean getShowInWidget() {
+		return this.showInWidget;
+	}
+
+	public void setShowInPortal(Boolean showInPortal) {
+		this.showInPortal = showInPortal;
+	}
+
+	public Boolean getShowInPortal() {
+		return this.showInPortal;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Plan extends Resource
 	{
@@ -434,6 +468,25 @@ public class Addon extends Resource
 		{
 			return price;
 		}
+	}
+
+	public void setCustomFields(List<CustomField> customFields)
+	{
+		this.customFields = customFields;
+	}
+
+	public List<CustomField> getCustomFields()
+	{
+		return customFields;
+	}
+
+	public void setTags(List<Tag> tags)
+	{
+		this.tags=tags;
+	}
+
+	public List<Tag> getTags(){
+		return tags;
 	}
 
 }
