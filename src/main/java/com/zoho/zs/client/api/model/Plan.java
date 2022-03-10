@@ -51,7 +51,7 @@ public class Plan extends Resource {
 
 	Boolean showInPortal;
 
-	String Description;
+	String description;
 
 	@JsonIgnore
 	String taxName;
@@ -317,12 +317,12 @@ public class Plan extends Resource {
 		return this.showInPortal;
 	}
 
-	public void setDescription(String Description) {
-		this.Description = Description;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getDescription() {
-		return this.Description;
+		return this.description;
 	}
 
 	@JsonProperty
