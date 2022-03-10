@@ -1,11 +1,11 @@
 package com.zoho.zs.client.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zoho.zs.client.api.net.Resource;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tag extends Resource {
     String tagOptionId;
-
-    Boolean isTagMandatory;
 
     String tagName;
 
@@ -25,6 +25,4 @@ public class Tag extends Resource {
     public void setTagOptionName(String tagOptionName) {this.tagOptionName= tagOptionName;}
     public String getTagOptionName() {return tagOptionName;}
 
-    public void setIsTagMandatory(Boolean isTagMandatory){this.isTagMandatory = isTagMandatory;}
-    public Boolean getIsTagMandatory(){return isTagMandatory;}
 }
