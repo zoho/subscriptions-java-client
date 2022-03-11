@@ -1,5 +1,3 @@
-
-
 package com.zoho.zs.client.api.model;
 
 import java.math.BigDecimal;
@@ -81,271 +79,337 @@ public class Plan extends Resource {
 
 	List<Tag> tags;
 
-	public static Plan retrieve(String planCode) throws ZSAPIException {
+	public static Plan retrieve(String planCode) throws ZSAPIException
+	{
 		return ResourceUtil.process(RequestMethod.GET, instancePath(Plan.class, planCode), Plan.class);
 	}
 
-	public static ListResponse<Plan> list() throws ZSAPIException {
+	public static ListResponse<Plan> list() throws ZSAPIException
+	{
 		return list(GenericListParams.getDefaults());
 	}
 
-	public static ListResponse<Plan> list(GenericListParams params) throws ZSAPIException {
+	public static ListResponse<Plan> list(GenericListParams params) throws ZSAPIException
+	{
 		return ResourceUtil.list(RequestMethod.GET, classPath(Plan.class), Plan.class, params);
 	}
 
-	public static Plan create(Plan plan) throws ZSAPIException {
+	public static Plan create(Plan plan) throws ZSAPIException
+	{
 		return ResourceUtil.process(RequestMethod.POST, classPath(Plan.class), Plan.class, plan);
 	}
 
-	public static void markAsActive(String planCode) throws ZSAPIException {
+	public static void markAsActive(String planCode) throws ZSAPIException
+	{
 		ResourceUtil.process(RequestMethod.POST, instancePath(Plan.class, planCode) + "/markasactive", Plan.class);
 	}
 
-	public static void markAsInactive(String planCode) throws ZSAPIException {
+	public static void markAsInactive(String planCode) throws ZSAPIException
+	{
 		ResourceUtil.process(RequestMethod.POST, instancePath(Plan.class, planCode) + "/markasinactive", Plan.class);
 	}
 
-	public static Plan update(Plan plan, String planCode) throws ZSAPIException {
+	public static Plan update(Plan plan, String planCode) throws ZSAPIException
+	{
 		return ResourceUtil.process(RequestMethod.PUT, instancePath(Plan.class, planCode), Plan.class, plan);
 	}
 
-	public static void delete(String planCode) throws ZSAPIException {
+	public static void delete(String planCode) throws ZSAPIException
+	{
 		ResourceUtil.process(RequestMethod.DELETE, instancePath(Plan.class, planCode), Plan.class);
 	}
 
-	public void setPlanCode(String planCode) {
+	public void setPlanCode(String planCode)
+	{
 		this.planCode = planCode;
 	}
 
-	public String getPlanCode() {
+	public String getPlanCode()
+	{
 		return planCode;
 	}
 
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setProductId(String productId) {
+	public void setProductId(String productId)
+	{
 		this.productId = productId;
 	}
 
-	public String getProductId() {
+	public String getProductId()
+	{
 		return productId;
 	}
 
-	public void setProductType(String productType) {
+	public void setProductType(String productType)
+	{
 		this.productType = productType;
 	}
 
-	public String getProductType() {
+	public String getProductType()
+	{
 		return productType;
 	}
 
-	public void setTaxId(String taxId) {
+	public void setTaxId(String taxId)
+	{
 		this.taxId = taxId;
 	}
 
-	public String getTaxId() {
+	public String getTaxId()
+	{
 		return taxId;
 	}
 
 	@JsonProperty
-	public void setTaxName(String taxName) {
+	public void setTaxName(String taxName)
+	{
 		this.taxName = taxName;
 	}
 
 	@JsonIgnore
-	public String getTaxName() {
+	public String getTaxName()
+	{
 		return taxName;
 	}
 
 	@JsonProperty
-	public void setTaxType(String taxType) {
+	public void setTaxType(String taxType)
+	{
 		this.taxType = taxType;
 	}
 
 	@JsonIgnore
-	public String getTaxType() {
+	public String getTaxType()
+	{
 		return taxType;
 	}
 
-	public void setAccountId(String accountId) {
+	public void setAccountId(String accountId)
+	{
 		this.accountId = accountId;
 	}
 
-	public String getAccountId() {
+	public String getAccountId()
+	{
 		return accountId;
 	}
 
-	public void setTrialPeriod(Integer trialPeriod) {
+	public void setTrialPeriod(Integer trialPeriod)
+	{
 		this.trialPeriod = trialPeriod;
 	}
 
-	public Integer getTrialPeriod() {
+	public Integer getTrialPeriod()
+	{
 		return trialPeriod;
 	}
 
-	public void setSetupFee(BigDecimal setupFee) {
+	public void setSetupFee(BigDecimal setupFee)
+	{
 		this.setupFee = setupFee;
 	}
 
-	public BigDecimal getSetupFee() {
+	public BigDecimal getSetupFee()
+	{
 		return setupFee;
 	}
 
-	public void setRecurringPrice(BigDecimal recurringPrice) {
+	public void setRecurringPrice(BigDecimal recurringPrice)
+	{
 		this.recurringPrice = recurringPrice;
 	}
 
-	public BigDecimal getRecurringPrice() {
+	public BigDecimal getRecurringPrice()
+	{
 		return recurringPrice;
 	}
 
-	public void setInterval(Integer interval) {
+	public void setInterval(Integer interval)
+	{
 		this.interval = interval;
 	}
 
-	public Integer getInterval() {
+	public Integer getInterval()
+	{
 		return interval;
 	}
 
-	public void setIntervalUnit(String intervalUnit) {
+	public void setIntervalUnit(String intervalUnit)
+	{
 		this.intervalUnit = intervalUnit;
 	}
 
-	public String getIntervalUnit() {
+	public String getIntervalUnit()
+	{
 		return intervalUnit;
 	}
 
-	public void setBillingCycles(Integer billingCycles) {
+	public void setBillingCycles(Integer billingCycles)
+	{
 		this.billingCycles = billingCycles;
 	}
 
-	public Integer getBillingCycles() {
+	public Integer getBillingCycles()
+	{
 		return billingCycles;
 	}
 
 	@JsonProperty
-	public void setPlanId(String planId) {
+	public void setPlanId(String planId)
+	{
 		this.planId = planId;
 	}
 
 	@JsonIgnore
-	public String getPlanId() {
+	public String getPlanId()
+	{
 		return planId;
 	}
 
 	@JsonProperty
-	public void setStatus(String status) {
+	public void setStatus(String status)
+	{
 		this.status = status;
 	}
 
 	@JsonIgnore
-	public String getStatus() {
+	public String getStatus()
+	{
 		return status;
 	}
 
 	@JsonProperty
-	public void setCreatedTime(Date createdTime) {
+	public void setCreatedTime(Date createdTime)
+	{
 		this.createdTime = createdTime;
 	}
 
 	@JsonIgnore
-	public Date getCreatedTime() {
+	public Date getCreatedTime()
+	{
 		return createdTime;
 	}
 
 	@JsonProperty
-	public void setUpdatedTime(Date updatedTime) {
+	public void setUpdatedTime(Date updatedTime)
+	{
 		this.updatedTime = updatedTime;
 	}
 
 	@JsonIgnore
-	public Date getUpdatedTime() {
+	public Date getUpdatedTime()
+	{
 		return updatedTime;
 	}
 
-	public void setIsTaxable(Boolean isTaxable) {
+	public void setIsTaxable(Boolean isTaxable)
+	{
 		this.isTaxable = isTaxable;
 	}
 
-	public Boolean getIsTaxable() {
+	public Boolean getIsTaxable()
+	{
 		return isTaxable;
 	}
 
-	public void setTaxExemptionCode(String taxExemptionCode) {
+	public void setTaxExemptionCode(String taxExemptionCode)
+	{
 		this.taxExemptionCode = taxExemptionCode;
 	}
 
-	public String getTaxExemptionId() {
+	public String getTaxExemptionId()
+	{
 		return taxExemptionId;
 	}
 
-	public void setTaxExemptionId(String taxExemptionId) {
+	public void setTaxExemptionId(String taxExemptionId)
+	{
 		this.taxExemptionId = taxExemptionId;
 	}
 
-	public String getTaxPercentage() {
+	public String getTaxPercentage()
+	{
 		return taxPercentage;
 	}
 
-	public void setTaxPercentage(String taxPercentage) {
+	public void setTaxPercentage(String taxPercentage)
+	{
 		this.taxPercentage = taxPercentage;
 	}
 
-	public String getTaxExemptionCode() {
+	public String getTaxExemptionCode()
+	{
 		return taxExemptionCode;
 	}
 
-	public void setShowInWidget(Boolean showInWidget) {
+	public void setShowInWidget(Boolean showInWidget)
+	{
 		this.showInWidget = showInWidget;
 	}
 
-	public Boolean getShowInWidget() {
+	public Boolean getShowInWidget()
+	{
 		return this.showInWidget;
 	}
 
-	public void setShowInPortal(Boolean showInPortal) {
+	public void setShowInPortal(Boolean showInPortal)
+	{
 		this.showInPortal = showInPortal;
 	}
 
-	public Boolean getShowInPortal() {
+	public Boolean getShowInPortal()
+	{
 		return this.showInPortal;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(String description)
+	{
 		this.description = description;
 	}
 
-	public String getDescription() {
+	public String getDescription()
+	{
 		return this.description;
 	}
 
 	@JsonProperty
-	public void setAddons(List<Addon> addons) {
+	public void setAddons(List<Addon> addons)
+	{
 		this.addons = addons;
 	}
 
 	@JsonIgnore
-	public List<Addon> getAddons() {
+	public List<Addon> getAddons()
+	{
 		return addons;
 	}
 
-	public void setCustomFields(List<CustomField> customFields) {
+	public void setCustomFields(List<CustomField> customFields)
+	{
 		this.customFields = customFields;
 	}
 
-	public List<CustomField> getCustomFields() {
+	public List<CustomField> getCustomFields()
+	{
 		return customFields;
 	}
 
-	public void setTags(List<Tag> tags){this.tags=tags;}
+	public void setTags(List<Tag> tags)
+	{
+		this.tags=tags;
+	}
 
-	public List<Tag> getTags(){return tags;}
-
-
+	public List<Tag> getTags()
+	{
+		return tags;
+	}
 }

@@ -19,7 +19,6 @@ import com.zoho.zs.client.api.net.ResourceUtil;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer extends Resource
 {
-
 	String companyName;
 
 	String displayName;
@@ -40,14 +39,11 @@ public class Customer extends Resource
 
 	ShippingAddress shippingAddress;
 
-	List<Customer.Customfield> customFields;
+	List<CustomField> customFields;
 
 	String notes;
 
-	BigDecimal amount;
 	String taxAuthority;
-
-	String description;
 
 	String isTaxable;
 
@@ -71,6 +67,32 @@ public class Customer extends Resource
 
 	String paymentTermsLabel;
 
+	String salutation;
+
+	String department;
+
+	String source;
+
+	String designation;
+
+	Boolean achSupported;
+
+	String placeOfContact;
+
+	Boolean isPortalEnabled;
+
+	String skype;
+
+	String twitter;
+
+	String facebook;
+
+	DefaultTemplate defaultTemplate;
+
+	List<Customer.Documents> documents;
+
+	List<Tag> tags;
+
 	@JsonIgnore
 	String taxName;
 	@JsonIgnore
@@ -80,7 +102,7 @@ public class Customer extends Resource
 	@JsonIgnore
 	String zcrmContactId;
 	@JsonIgnore
-	List<Contactperson> contactpersons;
+	List<Contactperson> contactPersons;
 	@JsonIgnore
 	List<Card> cards;
 	@JsonIgnore
@@ -118,7 +140,7 @@ public class Customer extends Resource
 	@JsonIgnore
 	Integer pricePrecision;
 
-	String pricebookId;
+	String priceBookId;
 
 	Card card;
 
@@ -127,7 +149,7 @@ public class Customer extends Resource
 	String website;
 
 	@JsonIgnore
-	String primaryContactpersonId;
+	String primaryContactPersonId;
 
 	public static Customer retrieve(String customerCode) throws ZSAPIException
 	{
@@ -435,25 +457,155 @@ public class Customer extends Resource
 		return pricePrecision;
 	}
 
-	public String getPricebookId()
+	public String getPriceBookId()
 	{
-		return pricebookId;
+		return priceBookId;
 	}
 
-	public void setPricebookId(String pricebookId)
+	public void setPriceBookId(String priceBookId)
 	{
-		this.pricebookId = pricebookId;
+		this.priceBookId = priceBookId;
 	}
 
-	public List<Customer.Customfield> getCustomFields()
+	public List<CustomField> getCustomFields()
 	{
 		return customFields;
 	}
 
-	public void setCustomFields(List<Customer.Customfield> customFields)
+	public void setCustomFields(List<CustomField> customFields)
 	{
 		this.customFields = customFields;
 	}
+
+	public void setTags(List<Tag> tags)
+	{
+		this.tags=tags;
+	}
+
+	public List<Tag> getTags(){
+		return tags;
+	}
+
+	public void setSalutation(String salutation)
+	{
+		this.salutation = salutation;
+	}
+
+	public String getSalutation()
+	{
+		return salutation;
+	}
+
+	public void setDepartment(String department)
+	{
+		this.department = department;
+	}
+
+	public String getDepartment()
+	{
+		return department;
+	}
+
+	public void setSource(String source)
+	{
+		this.source = source;
+	}
+
+	public String getSource()
+	{
+		return source;
+	}
+
+	public void setDesignation(String designation)
+	{
+		this.designation = designation;
+	}
+
+	public String getDesignation()
+	{
+		return designation;
+	}
+
+	public void setAchSupported(Boolean achSupported)
+	{
+		this.achSupported = achSupported;
+	}
+
+	public Boolean getAchSupported()
+	{
+		return achSupported;
+	}
+
+	public void setPlaceOfContact(String placeOfContact)
+	{
+		this.placeOfContact = placeOfContact;
+	}
+
+	public String getPlaceOfContact()
+	{
+		return placeOfContact;
+	}
+
+	public void setIsPortalEnabled(boolean isPortalEnabled)
+	{
+		this.isPortalEnabled = isPortalEnabled;
+	}
+
+	public Boolean getIsPortalEnabled()
+	{
+		return isPortalEnabled;
+	}
+
+	public void setSkype(String skype)
+	{
+		this.skype = skype;
+	}
+
+	public String getSkype()
+	{
+		return skype;
+	}
+
+	public void setTwitter(String twitter)
+	{
+		this.twitter = twitter;
+	}
+
+	public String getTwitter()
+	{
+		return twitter;
+	}
+
+	public void setFacebook(String facebook)
+	{
+		this.facebook = facebook;
+	}
+
+	public String getFacebook()
+	{
+		return facebook;
+	}
+
+	public void setDefaultTemplate(DefaultTemplate defaultTemplate)
+	{
+		this.defaultTemplate = defaultTemplate;
+	}
+
+	public DefaultTemplate defaultTemplate()
+	{
+		return defaultTemplate;
+	}
+
+	public void setDocuments(List<Documents> documents)
+	{
+		this.documents = documents;
+	}
+
+	public List<Documents> getDocuments()
+	{
+		return documents;
+	}
+
 
 	public String getCountryCode()
 	{
@@ -579,15 +731,15 @@ public class Customer extends Resource
 	}
 
 	@JsonIgnore
-	public List<Contactperson> getContactpersons()
+	public List<Contactperson> getContactPersons()
 	{
-		return contactpersons;
+		return contactPersons;
 	}
 
 	@JsonProperty
-	public void setContactpersons(List<Contactperson> contactpersons)
+	public void setContactPersons(List<Contactperson> contactPersons)
 	{
-		this.contactpersons = contactpersons;
+		this.contactPersons = contactPersons;
 	}
 
 	@JsonIgnore
@@ -662,21 +814,23 @@ public class Customer extends Resource
 	}
 
 	@JsonProperty
-	public void setPrimaryContactpersonId(String primaryContactpersonId)
+	public void setPrimaryContactPersonId(String primaryContactPersonId)
 	{
-		this.primaryContactpersonId = primaryContactpersonId;
+		this.primaryContactPersonId = primaryContactPersonId;
 	}
 
 	@JsonIgnore
-	public String getPrimaryContactpersonId()
+	public String getPrimaryContactPersonId()
 	{
-		return primaryContactpersonId;
+		return primaryContactPersonId;
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class BillingAddress extends Resource
 	{
 		String street;
+
+		String attention;
 
 		String city;
 
@@ -687,6 +841,16 @@ public class Customer extends Resource
 		String country;
 
 		String fax;
+
+		public void setAttention(String attention)
+		{
+			this.attention = attention;
+		}
+
+		public String getAttention()
+		{
+			return attention;
+		}
 
 		public void setStreet(String street)
 		{
@@ -754,6 +918,8 @@ public class Customer extends Resource
 	{
 		String street;
 
+		String attention;
+
 		String city;
 
 		String state;
@@ -767,6 +933,16 @@ public class Customer extends Resource
 		public void setStreet(String street)
 		{
 			this.street = street;
+		}
+
+		public void setAttention(String attention)
+		{
+			this.attention = attention;
+		}
+
+		public String getAttention()
+		{
+			return attention;
 		}
 
 		public String getStreet()
@@ -825,43 +1001,105 @@ public class Customer extends Resource
 		}
 	}
 
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Customfield
+
+	public static class DefaultTemplate
 	{
-		String index;
+		String invoiceTemplateId;
 
-		String value;
+		String creditNoteTemplateId;
 
-		String label;
-
-		public String getIndex()
+		public void setInvoiceTemplateId(String invoiceTemplateId)
 		{
-			return index;
+			this.invoiceTemplateId = invoiceTemplateId;
 		}
 
-		public String getValue()
+		public String getInvoiceTemplateId()
 		{
-			return value;
+			return invoiceTemplateId;
+		}
+		public void setCreditNoteTemplateId(String creditNoteTemplateId)
+		{
+			this.creditNoteTemplateId = creditNoteTemplateId;
 		}
 
-		public String getLabel()
+		public String getCreditNoteTemplateId()
 		{
-			return label;
+			return creditNoteTemplateId;
+		}
+	}
+
+	public static class Documents
+	{
+		Boolean canShowInPortal;
+		String fileName;
+		String fileType;
+		BigDecimal fileSize;
+		String fileSizeFormatted;
+		String documentId;
+		Integer attachmentOrder;
+
+		public void setCanShowInPortal(Boolean canShowInPortal)
+		{
+			this.canShowInPortal = canShowInPortal;
 		}
 
-		public void setIndex(String index)
+		public Boolean getCanShowInPortal()
 		{
-			this.index = index;
+			return canShowInPortal;
+		}
+		public void setFileName(String fileName )
+		{
+			this.fileName = fileName;
 		}
 
-		public void setValue(String value)
+		public String getFileName()
 		{
-			this.value = value;
+			return fileName;
+		}
+		public void setFileType(String fileType)
+		{
+			this.fileType = fileType;
 		}
 
-		public void setLabel(String label)
+		public String getFileType()
 		{
-			this.label = label;
+			return fileType;
+		}
+		public void setFileSize(BigDecimal fileSize)
+		{
+			this.fileSize = fileSize;
+		}
+
+		public BigDecimal getFileSize()
+		{
+			return fileSize;
+		}
+		public void setFileSizeFormatted(String fileSizeFormatted)
+		{
+			this.fileSizeFormatted = fileSizeFormatted;
+		}
+
+		public String getFileSizeFormatted()
+		{
+			return fileSizeFormatted;
+		}
+		public void setDocumentId(String documentId)
+		{
+			this.documentId = documentId;
+		}
+
+		public String getDocumentId()
+		{
+			return documentId;
+		}
+		public void setAttachmentOrder(Integer attachmentOrder)
+		{
+			this.attachmentOrder = attachmentOrder;
+		}
+
+		public Integer getAttachmentOrder()
+		{
+			return attachmentOrder;
 		}
 	}
 }
