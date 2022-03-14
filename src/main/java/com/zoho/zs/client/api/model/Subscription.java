@@ -43,8 +43,6 @@ public class Subscription extends Resource
 
 	String email;
 
-//	String planName;
-
 	String subscriptionNumber;
 
 	Boolean isMeteredBilling;
@@ -54,8 +52,6 @@ public class Subscription extends Resource
 	String pauseDate;
 
 	String resumeDate;
-
-//	String planCode;
 
 	Boolean autoCollect;
 
@@ -138,16 +134,18 @@ public class Subscription extends Resource
 	String description;
 
 	String renewalAt;
+	
 	@JsonIgnore
 	String childInvoiceId;
+	
 	String additionalParam;
-//	Boolean prorate;
+
 	Boolean canAddBankAccount;
 
-//	String updatedTime;
-
 	String unbilledChargeId;
+	
 	Boolean canChargeSetupFeeImmediately;
+	
 	Boolean endOfTerm;
 
 	@JsonIgnore
@@ -781,18 +779,6 @@ public class Subscription extends Resource
 	{
 		this.lastBillingAt = lastBillingAt;
 	}
-
-//	@JsonIgnore
-//	public Boolean getProrate()
-//	{
-//		return prorate;
-//	}
-//
-//	@JsonProperty
-//	public void setProrate(Boolean prorate)
-//	{
-//		this.prorate = prorate;
-//	}
 
 	public Boolean getEndOfTerm()
 	{
