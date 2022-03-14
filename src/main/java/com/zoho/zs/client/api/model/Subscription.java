@@ -39,6 +39,24 @@ public class Subscription extends Resource
 
 	String customerId;
 
+	String customerName;
+
+	String email;
+
+//	String planName;
+
+	String subscriptionNumber;
+
+	Boolean isMeteredBilling;
+
+	String subTotal;
+
+	String pauseDate;
+
+	String resumeDate;
+
+//	String planCode;
+
 	Boolean autoCollect;
 
 	String startsAt;
@@ -46,6 +64,16 @@ public class Subscription extends Resource
 	BigDecimal maxAmount;
 
 	String subscriptionId;
+
+	String createdAt;
+
+	String placeOfSupply;
+
+	String salesPersonId;
+
+	List<CustomField> customFields;
+
+
 	@JsonIgnore
 	String taxId;
 
@@ -55,7 +83,6 @@ public class Subscription extends Resource
 	@JsonIgnore
 	String name;
 
-	@JsonIgnore
 	String status;
 
 	BigDecimal amount;
@@ -114,7 +141,13 @@ public class Subscription extends Resource
 	@JsonIgnore
 	String childInvoiceId;
 	String additionalParam;
-	Boolean prorate;
+//	Boolean prorate;
+	Boolean canAddBankAccount;
+
+//	String updatedTime;
+
+	String unbilledChargeId;
+	Boolean canChargeSetupFeeImmediately;
 	Boolean endOfTerm;
 
 	@JsonIgnore
@@ -139,7 +172,6 @@ public class Subscription extends Resource
 	Coupon coupon;
 
 	BankAccount bankAccount;
-	List<Subscription.Customfield> customFields;
 	Integer paymentTerms;
 	String paymentTermsLabel;
 	String salespersonName;
@@ -285,6 +317,89 @@ public class Subscription extends Resource
 		return customer;
 	}
 
+	public void setCustomerName(String customerName)
+	{
+		this.customerName = customerName;
+	}
+	public String getCustomerName()
+	{
+		return customerName;
+	}
+	public void setEmail(String email)
+	{
+		this.email = email;
+	}
+
+	public String getEmail()
+	{
+		return email;
+	}
+	public void setPlanName(String name)
+	{
+		Plan.name = name;
+	}
+
+	public String getPlanName()
+	{
+		return Plan.name;
+	}
+	public void setPlanCode(String planCode)
+	{
+		Plan.planCode = planCode;
+	}
+
+	public String getPlanCode()
+	{
+		return Plan.planCode;
+	}
+	public void setSubscriptionNumber(String subscriptionNumber)
+	{
+		this.subscriptionNumber = subscriptionNumber;
+	}
+
+	public String getSubscriptionNumber()
+	{
+		return subscriptionNumber;
+	}
+	public void setIsMeteredBilling(Boolean isMeteredBilling)
+	{
+		this.isMeteredBilling = isMeteredBilling;
+	}
+
+	public Boolean getIsMeteredBilling()
+	{
+		return isMeteredBilling;
+	}
+	public void setSubTotal(String subTotal)
+	{
+		this.subTotal = subTotal;
+	}
+
+	public String getSubTotal()
+	{
+		return subTotal;
+	}
+
+	public void setPauseDate(String pauseDate)
+	{
+		this.pauseDate = pauseDate;
+	}
+
+	public String getPauseDate()
+	{
+		return pauseDate;
+	}
+	public void setResumeDate(String resumeDate)
+	{
+		this.resumeDate = resumeDate;
+	}
+
+	public String getResumeDate()
+	{
+		return resumeDate;
+	}
+
+
 	public void setContactpersons(List<Contactperson> contactpersons)
 	{
 		this.contactpersons = contactpersons;
@@ -401,13 +516,11 @@ public class Subscription extends Resource
 		return name;
 	}
 
-	@JsonProperty
 	public void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public String getStatus()
 	{
 		return status;
@@ -669,17 +782,17 @@ public class Subscription extends Resource
 		this.lastBillingAt = lastBillingAt;
 	}
 
-	@JsonIgnore
-	public Boolean getProrate()
-	{
-		return prorate;
-	}
-
-	@JsonProperty
-	public void setProrate(Boolean prorate)
-	{
-		this.prorate = prorate;
-	}
+//	@JsonIgnore
+//	public Boolean getProrate()
+//	{
+//		return prorate;
+//	}
+//
+//	@JsonProperty
+//	public void setProrate(Boolean prorate)
+//	{
+//		this.prorate = prorate;
+//	}
 
 	public Boolean getEndOfTerm()
 	{
@@ -835,17 +948,6 @@ public class Subscription extends Resource
 		this.bankAccount = bankAccount;
 	}
 
-	public List<Subscription.Customfield> getCustomFields()
-
-	{
-		return customFields;
-	}
-
-	public void setCustomFields(List<Subscription.Customfield> customFields)
-	{
-		this.customFields = customFields;
-	}
-
 	public Integer getPaymentTerms()
 	{
 		return paymentTerms;
@@ -874,6 +976,15 @@ public class Subscription extends Resource
 	public void setSalespersonName(String salespersonName)
 	{
 		this.salespersonName = salespersonName;
+	}
+	public void setCustomFields(List<CustomField> customFields)
+	{
+		this.customFields = customFields;
+	}
+
+	public List<CustomField> getCustomFields()
+	{
+		return customFields;
 	}
 
 	@JsonIgnore
@@ -996,12 +1107,74 @@ public class Subscription extends Resource
 		this.paymentGateways = paymentGateways;
 	}
 
+	public void setCreatedAt(String createdAt)
+	{
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedAt()
+	{
+		return createdAt;
+	}
+
+	public void setPlaceOfSupply(String placeOfSupply)
+	{
+		this.placeOfSupply = placeOfSupply;
+	}
+
+	public String getPlaceOfSupply()
+	{
+		return placeOfSupply;
+	}
+
+	public void setSalesPersonId(String salesPersonId)
+	{
+		this.salesPersonId = salesPersonId;
+	}
+
+	public String getSalesPersonId()
+	{
+		return salesPersonId;
+	}
+
+	public void setCanAddBankAccount(Boolean canAddBankAccount)
+	{
+		this.canAddBankAccount=canAddBankAccount;
+	}
+
+	public Boolean getCanAddBankAccount()
+	{
+		return canAddBankAccount;
+	}
+	public void setUnbilledChargeId(String unbilledChargeId)
+	{
+		this.unbilledChargeId=unbilledChargeId;
+	}
+	public String getUnbilledChargeId()
+	{
+		return unbilledChargeId;
+	}
+
+	public void setCanChargeSetupFeeImmediately(Boolean canChargeSetupFeeImmediately)
+	{
+		this.canChargeSetupFeeImmediately=canChargeSetupFeeImmediately;
+	}
+	public Boolean getCanChargeSetupFeeImmediately()
+	{
+		return canChargeSetupFeeImmediately;
+	}
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Plan extends Resource
 	{
-		String planCode;
+		static String planCode;
+
+		static String name;
+
+		BigDecimal discound;
 
 		BigDecimal price;
+
+		BigDecimal total;
 
 		Integer quantity;
 
@@ -1022,11 +1195,16 @@ public class Subscription extends Resource
 		String taxExemptionCode;
 
 		String taxId;
+
 		String setupFeeTaxId;
 
 		String setupFeeTaxExemptionId;
 
 		String setupFeeTaxExemptionCode;
+
+		List<Tag> tags;
+
+		List<CustomField> customFields;
 
 		@JsonIgnore
 		String isTaxable;
@@ -1048,12 +1226,22 @@ public class Subscription extends Resource
 
 		public void setPlanCode(String planCode)
 		{
-			this.planCode = planCode;
+			Plan.planCode = planCode;
 		}
 
 		public String getPlanCode()
 		{
 			return planCode;
+		}
+
+		public void setName(String name)
+		{
+			this.name = name;
+		}
+
+		public String getName()
+		{
+			return name;
 		}
 
 		public void setPrice(BigDecimal price)
@@ -1064,6 +1252,26 @@ public class Subscription extends Resource
 		public BigDecimal getPrice()
 		{
 			return price;
+		}
+
+		public void setTotal(BigDecimal total)
+		{
+			this.total = total;
+		}
+
+		public BigDecimal getTotal()
+		{
+			return total;
+		}
+
+		public void setDiscound(BigDecimal discound)
+		{
+			this.discound = discound;
+		}
+
+		public BigDecimal getDiscound()
+		{
+			return discound;
 		}
 
 		public void setQuantity(Integer quantity)
@@ -1271,6 +1479,27 @@ public class Subscription extends Resource
 		{
 			this.setupFeeTaxExemptionCode = setupFeeTaxExemptionCode;
 		}
+
+		public void setTags(List<Tag> tags)
+		{
+			this.tags=tags;
+		}
+
+		public List<Tag> getTags()
+		{
+			return tags;
+		}
+
+		public void setCustomFields(List<CustomField> customFields)
+		{
+			this.customFields = customFields;
+		}
+
+		public List<CustomField> getCustomFields()
+		{
+			return customFields;
+		}
+
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -1285,9 +1514,20 @@ public class Subscription extends Resource
 
 		Integer quantity;
 
+		String addonDescription;
+
+		BigDecimal discound;
+
+		BigDecimal total;
+
 		String taxId;
 		String taxExemptionId;
 		String taxExemptionCode;
+
+		List<CustomField> customFields;
+
+		List<Tag> tags;
+
 		@JsonIgnore
 		String taxType;
 		@JsonIgnore
@@ -1343,6 +1583,34 @@ public class Subscription extends Resource
 			return quantity;
 		}
 
+		public void setDiscound(BigDecimal discound)
+		{
+			this.discound = discound;
+		}
+
+		public BigDecimal getDiscound()
+		{
+			return discound;
+		}
+
+		public void setTotal(BigDecimal total)
+		{
+			this.total = total;
+		}
+
+		public BigDecimal getTotal()
+		{
+			return total;
+		}
+
+		public void setAddonDescription(String addonDescription)
+		{
+			this.addonDescription=addonDescription;
+		}
+		public String getAddonDescription()
+		{
+			return addonDescription;
+		}
 		public String getTaxId()
 		{
 			return taxId;
@@ -1444,6 +1712,26 @@ public class Subscription extends Resource
 		{
 			this.productExemptionId = productExemptionId;
 		}
+
+		public void setCustomFields(List<CustomField> customFields)
+		{
+			this.customFields = customFields;
+		}
+
+		public List<CustomField> getCustomFields()
+		{
+			return customFields;
+		}
+
+		public void setTags(List<Tag> tags)
+		{
+			this.tags=tags;
+		}
+
+		public List<Tag> getTags()
+		{
+			return tags;
+		}
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -1530,48 +1818,6 @@ public class Subscription extends Resource
 		public Date getCommentedDate()
 		{
 			return commentedDate;
-		}
-	}
-
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Customfield
-	{
-		String index;
-
-		String value;
-		@JsonIgnore
-		String label;
-
-		public String getIndex()
-		{
-			return index;
-		}
-
-		public String getValue()
-		{
-			return value;
-		}
-
-		@JsonIgnore
-		public String getLabel()
-		{
-			return label;
-		}
-
-		public void setIndex(String index)
-		{
-			this.index = index;
-		}
-
-		public void setValue(String value)
-		{
-			this.value = value;
-		}
-
-		@JsonProperty
-		public void setLabel(String label)
-		{
-			this.label = label;
 		}
 	}
 
