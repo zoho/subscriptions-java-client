@@ -378,7 +378,7 @@ public class Subscription extends Resource
 		return subTotal;
 	}
 
-	public void setPauseDate(String pauseDate)
+	private void setPauseDate(String pauseDate)
 	{
 		this.pauseDate = pauseDate;
 	}
@@ -387,7 +387,7 @@ public class Subscription extends Resource
 	{
 		return pauseDate;
 	}
-	public void setResumeDate(String resumeDate)
+	private void setResumeDate(String resumeDate)
 	{
 		this.resumeDate = resumeDate;
 	}
@@ -468,7 +468,7 @@ public class Subscription extends Resource
 		return referenceId;
 	}
 
-	public void setSubscriptionId(String subscriptionId)
+	private void setSubscriptionId(String subscriptionId)
 	{
 		this.subscriptionId = subscriptionId;
 	}
