@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,7 +56,7 @@ public class ResourceUtil
 			JsonNode dataNode = root.get(className != null ? className : clazz.getSimpleName().toLowerCase());
 			if (dataNode == null)
 			{
-				return null;
+				return mapper.readValue((String) body,clazz);
 			}
 			return mapper.readValue(dataNode.toString(), clazz);
 		}
