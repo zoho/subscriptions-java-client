@@ -468,7 +468,7 @@ public class Subscription extends Resource
 		return referenceId;
 	}
 
-	private void setSubscriptionId(String subscriptionId)
+	public void setSubscriptionId(String subscriptionId)
 	{
 		this.subscriptionId = subscriptionId;
 	}

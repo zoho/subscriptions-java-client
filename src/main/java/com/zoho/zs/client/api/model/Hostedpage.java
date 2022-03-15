@@ -15,7 +15,7 @@ import com.zoho.zs.client.api.net.ResourceUtil;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Hostedpage extends Resource
 {
-	@JsonIgnore
+
 	String hostedpageId;
 
 	@JsonIgnore
@@ -24,20 +24,18 @@ public class Hostedpage extends Resource
 	@JsonIgnore
 	String additionalParam;
 
-	@JsonIgnore
 	String status;
 
-	@JsonIgnore
 	String url;
 
-	@JsonIgnore
 	String action;
 
-	@JsonIgnore
 	Date expiringTime;
 
-	@JsonIgnore
 	Date createdTime;
+
+	CustomField customField;
+
 
 	public static Hostedpage retrieve(String id) throws ZSAPIException
 	{
@@ -79,13 +77,11 @@ public class Hostedpage extends Resource
 		return ResourceUtil.process(RequestMethod.POST, classPath(Hostedpage.class) + "/buyonetimeaddon", Hostedpage.class, subscription);
 	}
 
-	@JsonProperty
-	public void setHostedpageId(String hostedpageId)
+	private void setHostedpageId(String hostedpageId)
 	{
 		this.hostedpageId = hostedpageId;
 	}
 
-	@JsonIgnore
 	public String getHostedpageId()
 	{
 		return hostedpageId;
@@ -115,63 +111,66 @@ public class Hostedpage extends Resource
 		return additionalParam;
 	}
 
-	@JsonProperty
-	public void setStatus(String status)
+	private void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public String getStatus()
 	{
 		return status;
 	}
 
-	@JsonProperty
-	public void setUrl(String url)
+
+	private void setUrl(String url)
 	{
 		this.url = url;
 	}
 
-	@JsonIgnore
 	public String getUrl()
 	{
 		return url;
 	}
 
-	@JsonProperty
-	public void setAction(String action)
+
+	private void setAction(String action)
 	{
 		this.action = action;
 	}
 
-	@JsonIgnore
 	public String getAction()
 	{
 		return action;
 	}
 
-	@JsonProperty
-	public void setExpiringTime(Date expiringTime)
+
+	private void setExpiringTime(Date expiringTime)
 	{
 		this.expiringTime = expiringTime;
 	}
 
-	@JsonIgnore
 	public Date getExpiringTime()
 	{
 		return expiringTime;
 	}
 
-	@JsonProperty
-	public void setCreatedTime(Date createdTime)
+	private void setCreatedTime(Date createdTime)
 	{
 		this.createdTime = createdTime;
 	}
 
-	@JsonIgnore
 	public Date getCreatedTime()
 	{
 		return createdTime;
 	}
+
+	public void setCustomField(CustomField customField)
+	{
+		this.customField = customField;
+	}
+	public CustomField getCustomField()
+	{
+		return customField;
+	}
+
 }
