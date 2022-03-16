@@ -3,9 +3,7 @@ package com.zoho.zs.client.api.model;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zoho.zs.client.api.exception.ZSAPIException;
 import com.zoho.zs.client.api.net.Resource;
 import com.zoho.zs.client.api.net.ResourceUtil;
@@ -18,58 +16,58 @@ public class Refund extends Resource
 
 	String description;
 
-	@JsonIgnore
+
 	String customerId;
 
-	@JsonIgnore
+
 	String date;
 
-	@JsonIgnore
+
 	String refundMode;
 
-	@JsonIgnore
+
 	String referenceNumber;
 
-	@JsonIgnore
+
 	String status;
 
-	@JsonIgnore
+
 	String customerName;
 
-	@JsonIgnore
+
 	String email;
 
-	@JsonIgnore
+
 	BigDecimal exchangeRate;
 
-	@JsonIgnore
+
 	Integer pricePrecision;
 
-	@JsonIgnore
+
 	String currencyCode;
 
-	@JsonIgnore
+
 	String currencySymbol;
 
-	@JsonIgnore
-	Creditnote creditnote;
 
-	@JsonIgnore
-	Autotransaction autotransaction;
+	CreditNote creditnote;
 
-	@JsonIgnore
+
+	AutoTransaction autotransaction;
+
+
 	String refundId;
 
-	@JsonIgnore
+
 	String creditnoteNumber;
 
-	@JsonIgnore
+
 	String transactionId;
 
-	@JsonIgnore
+
 	String firstName;
 
-	@JsonIgnore
+
 	String lastName;
 
 	public static Refund retrieve(String id) throws ZSAPIException
@@ -77,13 +75,13 @@ public class Refund extends Resource
 		return ResourceUtil.process(RequestMethod.GET, "creditnotes/" + instancePath(Refund.class, id), Refund.class);
 	}
 
-	@JsonProperty
+
 	public void setCustomerId(String customerId)
 	{
 		this.customerId = customerId;
 	}
 
-	@JsonIgnore
+
 	public String getCustomerId()
 	{
 		return customerId;
@@ -99,25 +97,25 @@ public class Refund extends Resource
 		return amount;
 	}
 
-	@JsonProperty
+
 	public void setDate(String date)
 	{
 		this.date = date;
 	}
 
-	@JsonIgnore
+
 	public String getDate()
 	{
 		return date;
 	}
 
-	@JsonProperty
+
 	public void setRefundMode(String refundMode)
 	{
 		this.refundMode = refundMode;
 	}
 
-	@JsonIgnore
+
 	public String getRefundMode()
 	{
 		return refundMode;
@@ -133,274 +131,274 @@ public class Refund extends Resource
 		return description;
 	}
 
-	@JsonProperty
+
 	public void setReferenceNumber(String referenceNumber)
 	{
 		this.referenceNumber = referenceNumber;
 	}
 
-	@JsonIgnore
+
 	public String getReferenceNumber()
 	{
 		return referenceNumber;
 	}
 
-	@JsonProperty
+
 	public void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	@JsonIgnore
+
 	public String getStatus()
 	{
 		return status;
 	}
 
-	@JsonProperty
+
 	public void setCustomerName(String customerName)
 	{
 		this.customerName = customerName;
 	}
 
-	@JsonIgnore
+
 	public String getCustomerName()
 	{
 		return customerName;
 	}
 
-	@JsonProperty
+
 	public void setEmail(String email)
 	{
 		this.email = email;
 	}
 
-	@JsonIgnore
+
 	public String getEmail()
 	{
 		return email;
 	}
 
-	@JsonProperty
+
 	public void setExchangeRate(BigDecimal exchangeRate)
 	{
 		this.exchangeRate = exchangeRate;
 	}
 
-	@JsonIgnore
+
 	public BigDecimal getExchangeRate()
 	{
 		return exchangeRate;
 	}
 
-	@JsonProperty
+
 	public void setPricePrecision(Integer pricePrecision)
 	{
 		this.pricePrecision = pricePrecision;
 	}
 
-	@JsonIgnore
+
 	public Integer getPricePrecision()
 	{
 		return pricePrecision;
 	}
 
-	@JsonProperty
+
 	public void setCurrencyCode(String currencyCode)
 	{
 		this.currencyCode = currencyCode;
 	}
 
-	@JsonIgnore
+
 	public String getCurrencyCode()
 	{
 		return currencyCode;
 	}
 
-	@JsonProperty
+
 	public void setCurrencySymbol(String currencySymbol)
 	{
 		this.currencySymbol = currencySymbol;
 	}
 
-	@JsonIgnore
+
 	public String getCurrencySymbol()
 	{
 		return currencySymbol;
 	}
 
-	@JsonProperty
-	public void setCreditnote(Creditnote creditnote)
+
+	public void setCreditNote(CreditNote creditnote)
 	{
 		this.creditnote = creditnote;
 	}
 
-	@JsonIgnore
-	public Creditnote getCreditnote()
+
+	public CreditNote getCreditNote()
 	{
 		return creditnote;
 	}
 
-	@JsonProperty
-	public void setAutotransaction(Autotransaction autotransaction)
+
+	public void setAutoTransaction(AutoTransaction autotransaction)
 	{
 		this.autotransaction = autotransaction;
 	}
 
-	@JsonIgnore
-	public Autotransaction getAutotransaction()
+
+	public AutoTransaction getAutoTransaction()
 	{
 		return autotransaction;
 	}
 
-	@JsonIgnore
+
 	public String getRefundId()
 	{
 		return refundId;
 	}
 
-	@JsonProperty
+
 	public void setRefundId(String refundId)
 	{
 		this.refundId = refundId;
 	}
 
-	@JsonIgnore
-	public String getCreditnoteNumber()
+
+	public String getCreditNoteNumber()
 	{
 		return creditnoteNumber;
 	}
 
-	@JsonProperty
-	public void setCreditnoteNumber(String creditnoteNumber)
+
+	public void setCreditNoteNumber(String creditnoteNumber)
 	{
 		this.creditnoteNumber = creditnoteNumber;
 	}
 
-	@JsonIgnore
+
 	public String getTransactionId()
 	{
 		return transactionId;
 	}
 
-	@JsonProperty
+
 	public void setTransactionId(String transactionId)
 	{
 		this.transactionId = transactionId;
 	}
 
-	@JsonIgnore
+
 	public String getFirstName()
 	{
 		return firstName;
 	}
 
-	@JsonProperty
+
 	public void setFirstName(String firstName)
 	{
 		this.firstName = firstName;
 	}
 
-	@JsonIgnore
+
 	public String getLastName()
 	{
 		return lastName;
 	}
 
-	@JsonProperty
+
 	public void setLastName(String lastName)
 	{
 		this.lastName = lastName;
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Creditnote extends Resource
+	public static class CreditNote extends Resource
 	{
-		@JsonIgnore
-		String creditnoteId;
 
-		@JsonIgnore
-		String creditnoteNumber;
+		String creditNoteId;
 
-		@JsonIgnore
+
+		String creditNoteNumber;
+
+
 		String date;
 
-		@JsonIgnore
+
 		BigDecimal amount;
 
-		@JsonIgnore
+
 		BigDecimal refundAmount;
 
-		@JsonIgnore
+
 		BigDecimal balanceAmount;
 
-		@JsonProperty
-		public void setCreditnoteId(String creditnoteId)
+
+		public void setCreditNoteId(String creditNoteId)
 		{
-			this.creditnoteId = creditnoteId;
+			this.creditNoteId = creditNoteId;
 		}
 
-		@JsonIgnore
-		public String getCreditnoteId()
+
+		public String getCreditNoteId()
 		{
-			return creditnoteId;
+			return creditNoteId;
 		}
 
-		@JsonProperty
-		public void setCreditnoteNumber(String creditnoteNumber)
+
+		public void setCreditNoteNumber(String creditNoteNumber)
 		{
-			this.creditnoteNumber = creditnoteNumber;
+			this.creditNoteNumber = creditNoteNumber;
 		}
 
-		@JsonIgnore
-		public String getCreditnoteNumber()
+
+		public String getCreditNoteNumber()
 		{
-			return creditnoteNumber;
+			return creditNoteNumber;
 		}
 
-		@JsonProperty
+
 		public void setDate(String date)
 		{
 			this.date = date;
 		}
 
-		@JsonIgnore
+
 		public String getDate()
 		{
 			return date;
 		}
 
-		@JsonProperty
+
 		public void setAmount(BigDecimal amount)
 		{
 			this.amount = amount;
 		}
 
-		@JsonIgnore
+
 		public BigDecimal getAmount()
 		{
 			return amount;
 		}
 
-		@JsonProperty
+
 		public void setRefundAmount(BigDecimal refundAmount)
 		{
 			this.refundAmount = refundAmount;
 		}
 
-		@JsonIgnore
+
 		public BigDecimal getRefundAmount()
 		{
 			return refundAmount;
 		}
 
-		@JsonProperty
+
 		public void setBalanceAmount(BigDecimal balanceAmount)
 		{
 			this.balanceAmount = balanceAmount;
 		}
 
-		@JsonIgnore
+
 		public BigDecimal getBalanceAmount()
 		{
 			return balanceAmount;
@@ -409,135 +407,134 @@ public class Refund extends Resource
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class Autotransaction extends Resource
+	public static class AutoTransaction extends Resource
 	{
-		@JsonIgnore
-		String autotransactionId;
 
-		@JsonIgnore
-		String paymenGateway;
+		String autoTransactionId;
 
-		@JsonIgnore
+
+		String paymentGateway;
+
+
 		String gatewayTransactionId;
 
-		@JsonIgnore
+
 		String cardId;
 
-		@JsonIgnore
+
 		String lastFourDigits;
 
-		@JsonIgnore
+
 		String expiryMonth;
 
-		@JsonIgnore
+
 		String expiryYear;
 
-		@JsonIgnore
+
 		String gatewayErrorMessage;
 
-		@JsonIgnore
-		public String getPaymenGateway()
+
+		public String getPaymentGateway()
 		{
-			return paymenGateway;
+			return paymentGateway;
 		}
 
-		@JsonIgnore
-		public void setPaymenGateway(String paymenGateway)
+
+		public void setPaymentGateway(String paymentGateway)
 		{
-			this.paymenGateway = paymenGateway;
+			this.paymentGateway = paymentGateway;
 		}
 
-		@JsonIgnore
+
 		public String getGatewayErrorMessage()
 		{
 			return gatewayErrorMessage;
 		}
 
-		@JsonIgnore
+
 		public void setGatewayErrorMessage(String gatewayErrorMessage)
 		{
 			this.gatewayErrorMessage = gatewayErrorMessage;
 		}
 
-		@JsonProperty
-		public void setAutotransactionId(String autotransactionId)
+
+		public void setAutoTransactionId(String autoTransactionId)
 		{
-			this.autotransactionId = autotransactionId;
+			this.autoTransactionId = autoTransactionId;
 		}
 
-		@JsonIgnore
-		public String getAutotransactionId()
+
+		public String getAutoTransactionId()
 		{
-			return autotransactionId;
+			return autoTransactionId;
 		}
 
-		@JsonProperty
-		public void setGatewayName(String paymenGateway)
+
+		public void setGatewayName(String paymentGateway)
 		{
-			this.paymenGateway = paymenGateway;
+			this.paymentGateway = paymentGateway;
 		}
 
-		@JsonIgnore
+
 		public String getGatewayName()
 		{
-			return paymenGateway;
+			return paymentGateway;
 		}
 
-		@JsonProperty
+
 		public void setGatewayTransactionId(String gatewayTransactionId)
 		{
 			this.gatewayTransactionId = gatewayTransactionId;
 		}
 
-		@JsonIgnore
+
 		public String getGatewayTransactionId()
 		{
 			return gatewayTransactionId;
 		}
 
-		@JsonProperty
 		public void setCardId(String cardId)
 		{
 			this.cardId = cardId;
 		}
 
-		@JsonIgnore
+
 		public String getCardId()
 		{
 			return cardId;
 		}
 
-		@JsonProperty
+
 		public void setLastFourDigits(String lastFourDigits)
 		{
 			this.lastFourDigits = lastFourDigits;
 		}
 
-		@JsonIgnore
+
 		public String getLastFourDigits()
 		{
 			return lastFourDigits;
 		}
 
-		@JsonProperty
+
 		public void setExpiryMonth(String expiryMonth)
 		{
 			this.expiryMonth = expiryMonth;
 		}
 
-		@JsonIgnore
+
 		public String getExpiryMonth()
 		{
 			return expiryMonth;
 		}
 
-		@JsonProperty
+
 		public void setExpiryYear(String expiryYear)
 		{
 			this.expiryYear = expiryYear;
 		}
 
-		@JsonIgnore
+
 		public String getExpiryYear()
 		{
 			return expiryYear;

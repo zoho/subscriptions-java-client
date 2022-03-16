@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zoho.zs.client.api.exception.ZSAPIException;
 import com.zoho.zs.client.api.net.Resource;
 import com.zoho.zs.client.api.net.ResourceUtil;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Payment extends Resource
 {
@@ -63,6 +62,35 @@ public class Payment extends Resource
 
 	@JsonIgnore
 	String source;
+	Refund refund;
+
+	Double amountRefunded;
+
+	Double unusedAmount;
+
+	String accountId;
+
+	String taxAccountId;
+
+	Boolean isAdvancePayment;
+
+	String paymentNumberPrefix;
+
+	String paymentNumberSuffix;
+
+	String paymentNumber;
+
+	String taxId;
+
+	Double bankCharges;
+
+	String placeOfSupply;
+
+	String offlineCreatedDateWithTime;
+
+	Boolean canSendPaymentSms;
+
+	List<CustomField> customFields;
 
 	@JsonIgnore
 	String paymentId;
@@ -87,6 +115,10 @@ public class Payment extends Resource
 		return ResourceUtil.process(RequestMethod.POST, classPath(Payment.class), Payment.class, payment);
 	}
 
+	public static Payment update(Payment payment, String paymentId) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.PUT, instancePath(Payment.class, paymentId) , Payment.class, payment);
+	}
 	public void setDate(String date)
 	{
 		this.date = date;
@@ -115,6 +147,16 @@ public class Payment extends Resource
 	public String getDescription()
 	{
 		return description;
+	}
+
+	public Refund getRefund()
+	{
+		return refund;
+	}
+
+	public void setRefund(Refund refund)
+	{
+		this.refund = refund;
 	}
 
 	public void setReferenceNumber(String referenceNumber)
@@ -347,6 +389,142 @@ public class Payment extends Resource
 		this.lastFourDigits = lastFourDigits;
 	}
 
+	public void setAmountRefunded(Double amountRefunded)
+	{
+		this.amountRefunded = amountRefunded;
+	}
+	public Double getAmountRefunded()
+	{
+		return amountRefunded;
+	}
+	public void setUnusedAmount(Double unusedAmount)
+	{
+		this.unusedAmount = unusedAmount;
+	}
+	public Double getUnusedAmount()
+	{
+		return unusedAmount;
+	}
+
+	public void setTaxAccountId(String taxAccountId)
+	{
+		this.taxAccountId = taxAccountId;
+	}
+
+	public String getTaxAccountId()
+	{
+		return taxAccountId;
+	}
+
+	public void setAccountId(String accountId)
+	{
+		this.accountId = accountId;
+	}
+	public String getAccountId()
+	{
+		return accountId;
+	}
+
+	public Boolean getAdvancePayment()
+	{
+		return isAdvancePayment;
+	}
+
+	public void setAdvancePayment(Boolean advancePayment)
+	{
+		isAdvancePayment = advancePayment;
+	}
+
+	public void setPaymentNumberPrefix(String paymentNumberPrefix)
+	{
+		this.paymentNumberPrefix = paymentNumberPrefix;
+	}
+
+	public String getPaymentNumberPrefix()
+	{
+		return paymentNumberPrefix;
+	}
+
+	public Boolean getCanSendPaymentSms()
+	{
+		return canSendPaymentSms;
+	}
+
+	public void setCanSendPaymentSms(Boolean canSendPaymentSms)
+	{
+		this.canSendPaymentSms = canSendPaymentSms;
+	}
+
+	public Double getBankCharges()
+	{
+		return bankCharges;
+	}
+
+	public void setBankCharges(Double bankCharges)
+	{
+		this.bankCharges = bankCharges;
+	}
+
+	public String getPaymentNumber()
+	{
+		return paymentNumber;
+	}
+
+	public void setPaymentNumber(String paymentNumber)
+	{
+		this.paymentNumber = paymentNumber;
+	}
+
+	public void setTaxId(String taxId)
+	{
+		this.taxId = taxId;
+	}
+
+	public String getTaxId()
+	{
+		return taxId;
+	}
+
+	public String getOfflineCreatedDateWithTime()
+	{
+		return offlineCreatedDateWithTime;
+	}
+
+	public void setOfflineCreatedDateWithTime(String offlineCreatedDateWithTime)
+	{
+		this.offlineCreatedDateWithTime = offlineCreatedDateWithTime;
+	}
+
+	public String getPaymentNumberSuffix()
+	{
+		return paymentNumberSuffix;
+	}
+
+	public void setPaymentNumberSuffix(String paymentNumberSuffix)
+	{
+		this.paymentNumberSuffix = paymentNumberSuffix;
+	}
+
+	public List<CustomField> getCustomFields()
+	{
+		return customFields;
+	}
+
+	public void setCustomFields(List<CustomField> customFields)
+	{
+		this.customFields = customFields;
+	}
+
+	public String getPlaceOfSupply()
+	{
+		return placeOfSupply;
+	}
+
+	public void setPlaceOfSupply(String placeOfSupply)
+	{
+		this.placeOfSupply = placeOfSupply;
+	}
+
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Invoice extends Resource
 	{
@@ -361,6 +539,10 @@ public class Payment extends Resource
 		BigDecimal invoiceAmount;
 		@JsonIgnore
 		BigDecimal balanceAmount;
+
+		String hostedPageId;
+
+		String transactionType;
 
 		@JsonIgnore
 		Integer retryCount;
@@ -472,6 +654,27 @@ public class Payment extends Resource
 		{
 			this.subscriptionIds = subscriptionIds;
 		}
+
+		public String getHostedPageId()
+		{
+			return hostedPageId;
+		}
+
+		public void setHostedPageId(String hostedPageId)
+		{
+			this.hostedPageId = hostedPageId;
+		}
+
+		public String getTransactionType()
+		{
+			return transactionType;
+		}
+
+		public void setTransactionType(String transactionType)
+		{
+			this.transactionType = transactionType;
+		}
+
 	}
 
 	@JsonIgnoreProperties(ignoreUnknown = true)
@@ -586,6 +789,48 @@ public class Payment extends Resource
 
 		@JsonIgnore
 		String gatewayErrorMessage;
+		@JsonIgnore
+		String card_id;
+		@JsonIgnore
+		String expiry_month;
+		@JsonIgnore
+		String expiry_year;
+
+		@JsonIgnore
+		public String getCard_id()
+		{
+			return card_id;
+		}
+
+		@JsonProperty
+		public void setCard_id(String card_id)
+		{
+			this.card_id = card_id;
+		}
+
+		@JsonIgnore
+		public String getExpiry_month()
+		{
+			return expiry_month;
+		}
+
+		@JsonProperty
+		public void setExpiry_month(String expiry_month)
+		{
+			this.expiry_month = expiry_month;
+		}
+
+		@JsonIgnore
+		public String getExpiry_year()
+		{
+			return expiry_year;
+		}
+
+		@JsonProperty
+		public void setExpiry_year(String expiry_year)
+		{
+			this.expiry_year = expiry_year;
+		}
 
 		@JsonProperty
 		public void setAutotransactionId(String autotransactionId)
