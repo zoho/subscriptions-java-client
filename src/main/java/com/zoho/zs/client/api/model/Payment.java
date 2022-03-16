@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.zoho.zs.client.api.exception.ZSAPIException;
 import com.zoho.zs.client.api.net.Resource;
 import com.zoho.zs.client.api.net.ResourceUtil;
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Payment extends Resource
 {
