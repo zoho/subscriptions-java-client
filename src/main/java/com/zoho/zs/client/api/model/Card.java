@@ -13,10 +13,10 @@ import com.zoho.zs.client.api.net.ResourceUtil;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Card extends Resource
 {
-	@JsonIgnore
 	String cardId;
+	
+	String customerId;
 
-	@JsonIgnore
 	String status;
 
 	String lastFourDigits;
@@ -70,28 +70,33 @@ public class Card extends Resource
 		ResourceUtil.process(RequestMethod.DELETE, instancePath(Customer.class, customerId)+"/cards/"+cardId, Card.class);
 	}
 
-	@JsonProperty
 	public void setCardId(String cardId)
 	{
 		this.cardId = cardId;
 	}
 
-	@JsonIgnore
 	public String getCardId()
 	{
 		return cardId;
 	}
 
-	@JsonProperty
 	public void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public String getStatus()
 	{
 		return status;
+	}
+	
+	public void setCustomerId(String customerId)
+	{
+		this.customerId=customerId;
+	}
+	public String getCustomerId()
+	{
+		return customerId;
 	}
 
 	public void setLastFourDigits(String lastFourDigits)
