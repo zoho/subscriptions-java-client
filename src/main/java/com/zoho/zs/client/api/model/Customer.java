@@ -106,7 +106,7 @@ public class Customer extends Resource
 	@JsonIgnore
 	List<Card> cards;
 	@JsonIgnore
-	List<BankAccount> bankAccounts;
+	List<Bank_Account> bankAccounts;
 	@JsonIgnore
 	List<Subscription> subscriptions;
 
@@ -144,7 +144,7 @@ public class Customer extends Resource
 
 	Card card;
 
-	BankAccount bankAccount;
+	Bank_Account bankAccount;
 
 	String website;
 
@@ -755,13 +755,13 @@ public class Customer extends Resource
 	}
 
 	@JsonIgnore
-	public List<BankAccount> getBankAccounts()
+	public List<Bank_Account> getBankAccounts()
 	{
 		return bankAccounts;
 	}
 
 	@JsonProperty
-	public void setBankAccounts(List<BankAccount> bankAccounts)
+	public void setBankAccounts(List<Bank_Account> bankAccounts)
 	{
 		this.bankAccounts = bankAccounts;
 	}
@@ -788,12 +788,12 @@ public class Customer extends Resource
 		this.card = card;
 	}
 
-	public BankAccount getBankAccount()
+	public Bank_Account getBankAccount()
 	{
 		return bankAccount;
 	}
 
-	public void setBankAccount(BankAccount bankAccount)
+	public void setBankAccount(Bank_Account bankAccount)
 	{
 		this.bankAccount = bankAccount;
 	}

@@ -20,7 +20,7 @@ public class Subscription extends Resource
 {
 	Customer customer;
 
-	List<Contactperson> contactpersons;
+	List<Contactperson> contactPersons;
 
 	Card card;
 
@@ -169,7 +169,7 @@ public class Subscription extends Resource
 	@JsonIgnore
 	Coupon coupon;
 
-	BankAccount bankAccount;
+	Bank_Account bankAccount;
 	Integer paymentTerms;
 	String paymentTermsLabel;
 	String salespersonName;
@@ -398,14 +398,14 @@ public class Subscription extends Resource
 	}
 
 
-	public void setContactpersons(List<Contactperson> contactpersons)
+	public void setContactPersons(List<Contactperson> contactPersons)
 	{
-		this.contactpersons = contactpersons;
+		this.contactPersons = contactPersons;
 	}
 
-	public List<Contactperson> getContactpersons()
+	public List<Contactperson> getContactPersons()
 	{
-		return contactpersons;
+		return contactPersons;
 	}
 
 	public void setCard(Card card)
@@ -924,12 +924,12 @@ public class Subscription extends Resource
 		this.maxAmount = maxAmount;
 	}
 
-	public BankAccount getBankAccount()
+	public Bank_Account getBankAccount()
 	{
 		return bankAccount;
 	}
 
-	public void setBankAccount(BankAccount bankAccount)
+	public void setBankAccount(Bank_Account bankAccount)
 	{
 		this.bankAccount = bankAccount;
 	}

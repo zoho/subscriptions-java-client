@@ -6,7 +6,9 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zoho.zs.client.api.exception.ZSAPIException;
 import com.zoho.zs.client.api.net.Resource;
+import com.zoho.zs.client.api.net.ResourceUtil;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Card extends Resource
@@ -58,6 +60,15 @@ public class Card extends Resource
 	String address;
 
 	String funding;
+
+	public static Card retrieve(String customerId,String cardId) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.GET, instancePath(Customer.class, customerId)+"/cards/"+cardId, Card.class);
+	}
+	public static void delete(String customerId,String cardId) throws ZSAPIException
+	{
+		ResourceUtil.process(RequestMethod.DELETE, instancePath(Customer.class, customerId)+"/cards/"+cardId, Card.class);
+	}
 
 	@JsonProperty
 	public void setCardId(String cardId)
