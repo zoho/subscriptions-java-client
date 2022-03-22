@@ -29,43 +29,40 @@ public class Contactperson extends Resource
 
 	String contactpersonId;
 
-	@JsonIgnore
-	String customerCode;
+	String customerId;
 
-	@JsonIgnore
 	Date createdTime;
 
-	@JsonIgnore
 	Date updatedTime;
 
-	public static Contactperson retrieve(String customerCode, String contactpersonCode) throws ZSAPIException
+	public static Contactperson retrieve(String customerId, String contactpersonCode) throws ZSAPIException
 	{
-		return ResourceUtil.process(RequestMethod.GET, instancePath(Customer.class, customerCode) + "/" + instancePath(Contactperson.class, contactpersonCode), Contactperson.class);
+		return ResourceUtil.process(RequestMethod.GET, instancePath(Customer.class, customerId) + "/" + instancePath(Contactperson.class, contactpersonCode), Contactperson.class);
 	}
 
-	public static ListResponse<Contactperson> list(String customerCode) throws ZSAPIException
+	public static ListResponse<Contactperson> list(String customerId) throws ZSAPIException
 	{
-		return list(customerCode, GenericListParams.getDefaults());
+		return list(customerId, GenericListParams.getDefaults());
 	}
 
-	public static ListResponse<Contactperson> list(String customerCode, GenericListParams params) throws ZSAPIException
+	public static ListResponse<Contactperson> list(String customerId, GenericListParams params) throws ZSAPIException
 	{
-		return ResourceUtil.list(RequestMethod.GET, instancePath(Customer.class, customerCode) + "/" + classPath(Contactperson.class), Contactperson.class, params);
+		return ResourceUtil.list(RequestMethod.GET, instancePath(Customer.class, customerId) + "/" + classPath(Contactperson.class), Contactperson.class, params);
 	}
 
-	public static Contactperson create(String customerCode, Contactperson contactPerson) throws ZSAPIException
+	public static Contactperson create(String customerId, Contactperson contactPerson) throws ZSAPIException
 	{
-		return ResourceUtil.process(RequestMethod.POST, instancePath(Customer.class, customerCode) + "/" + classPath(Contactperson.class), Contactperson.class, contactPerson);
+		return ResourceUtil.process(RequestMethod.POST, instancePath(Customer.class, customerId) + "/" + classPath(Contactperson.class), Contactperson.class, contactPerson);
 	}
 
-	public static Contactperson update(Contactperson contactperson, String customerCode, String contactpersonCode) throws ZSAPIException
+	public static Contactperson update(Contactperson contactperson, String customerId, String contactpersonId) throws ZSAPIException
 	{
-		return ResourceUtil.process(RequestMethod.PUT, instancePath(Customer.class, customerCode) + "/" + instancePath(Contactperson.class, contactpersonCode), Contactperson.class, contactperson);
+		return ResourceUtil.process(RequestMethod.PUT, instancePath(Customer.class, customerId) + "/" + instancePath(Contactperson.class, contactpersonId), Contactperson.class, contactperson);
 	}
 
-	public static void delete(String customerCode, String contactpersonCode) throws ZSAPIException
+	public static void delete(String customerId, String contactpersonId) throws ZSAPIException
 	{
-		ResourceUtil.process(RequestMethod.DELETE, instancePath(Customer.class, customerCode) + "/" + instancePath(Contactperson.class, contactpersonCode), Contactperson.class);
+		ResourceUtil.process(RequestMethod.DELETE, instancePath(Customer.class, customerId) + "/" + instancePath(Contactperson.class, contactpersonId), Contactperson.class);
 	}
 
 	public void setFirstName(String firstName)
@@ -140,37 +137,31 @@ public class Contactperson extends Resource
 		this.zcrmContactId = zcrmContactId;
 	}
 
-	@JsonProperty
-	public void setCustomerCode(String customerCode)
+	public void setCustomerId(String customerId)
 	{
-		this.customerCode = customerCode;
+		this.customerId = customerId;
 	}
 
-	@JsonIgnore
-	public String getCustomerCode()
+	public String getCustomerId()
 	{
-		return customerCode;
+		return customerId;
 	}
 
-	@JsonIgnore
 	public Date getCreatedTime()
 	{
 		return createdTime;
 	}
 
-	@JsonProperty
 	public void setCreatedTime(Date createdTime)
 	{
 		this.createdTime = createdTime;
 	}
 
-	@JsonIgnore
 	public Date getUpdatedTime()
 	{
 		return updatedTime;
 	}
 
-	@JsonProperty
 	public void setUpdatedTime(Date updatedTime)
 	{
 		this.updatedTime = updatedTime;

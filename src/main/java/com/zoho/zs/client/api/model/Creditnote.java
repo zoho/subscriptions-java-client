@@ -6,9 +6,13 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zoho.zs.client.api.exception.ZSAPIException;
 import com.zoho.zs.client.api.net.Resource;
+import com.zoho.zs.client.api.net.ResourceUtil;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Creditnote extends Resource
 {
 	@JsonIgnore
@@ -32,7 +36,6 @@ public class Creditnote extends Resource
 	@JsonIgnore
 	String refundMode;
 
-	@JsonIgnore
 	String status;
 
 	@JsonIgnore
@@ -41,7 +44,6 @@ public class Creditnote extends Resource
 	@JsonIgnore
 	Autotransaction autotransaction;
 
-	@JsonIgnore
 	String creditnoteId;
 
 	@JsonIgnore
@@ -53,30 +55,22 @@ public class Creditnote extends Resource
 	@JsonIgnore
 	String customerCode;
 
-	@JsonIgnore
 	String customerName;
 
-	@JsonIgnore
 	String total;
 
-	@JsonIgnore
 	String balance;
 
-	@JsonIgnore
 	List<CreditnoteItem> creditnoteItems;
 
-	@JsonIgnore
 	List<Invoice> invoices;
 
-	@JsonIgnore
 	Date createdTime;
 
-	@JsonIgnore
 	String updatedTime;
 
-	@JsonIgnore
 	String creditnoteNumber;
-	@JsonIgnore
+
 	String customerId;
 	@JsonIgnore
 	String firstName;
@@ -85,9 +79,67 @@ public class Creditnote extends Resource
 	@JsonIgnore
 	String email;
 	@JsonIgnore
-	Long currencySymbol;
+	String currencySymbol;
 	@JsonIgnore
 	String htmlString;
+
+	String message;
+
+	List<Tax> taxes;
+
+	public static Creditnote create(Creditnote creditnote) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.POST, classPath(Creditnote.class), Creditnote.class, creditnote);
+	}
+
+	public static Creditnote retrieve(String creditnoteId) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.GET, instancePath(Creditnote.class, creditnoteId), Creditnote.class);
+	}
+	public static void delete(String creditnoteId) throws ZSAPIException
+	{
+		ResourceUtil.process(RequestMethod.DELETE, instancePath(Creditnote.class, creditnoteId), Creditnote.class);
+	}
+
+	public static Creditnote emailAnCreditnote(Mail mail, String id) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.POST, instancePath(Creditnote.class,id) + "/email", Creditnote.class, mail);
+	}
+
+	public static Creditnote convertToVoid(String id) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.POST, instancePath(Creditnote.class,id) + "/void",Creditnote.class);
+	}
+
+	public static Creditnote applyToInvoice(Creditnote creditnote,String id) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.POST, instancePath(Creditnote.class,id) + "/invoices", Creditnote.class, creditnote);
+	}
+	public static Creditnote convertToOpen(String id) throws ZSAPIException
+	{
+		return ResourceUtil.process(RequestMethod.POST, instancePath(Creditnote.class,id) + "/converttoopen",Creditnote.class);
+	}
+
+	public String getMessage()
+	{
+		return message;
+	}
+
+	public void setMessage(String message)
+	{
+		this.message = message;
+	}
+
+	public List<Tax> getTaxes()
+	{
+		return taxes;
+	}
+
+	public void setTaxes(List<Tax> taxes)
+	{
+		this.taxes = taxes;
+	}
+
 
 	@JsonProperty
 	public void setAmount(BigDecimal amount)
@@ -173,13 +225,11 @@ public class Creditnote extends Resource
 		return refundMode;
 	}
 
-	@JsonProperty
 	public void setStatus(String status)
 	{
 		this.status = status;
 	}
 
-	@JsonIgnore
 	public String getStatus()
 	{
 		return status;
@@ -209,13 +259,11 @@ public class Creditnote extends Resource
 		return autotransaction;
 	}
 
-	@JsonProperty
 	public void setCreditnoteId(String creditnoteId)
 	{
 		this.creditnoteId = creditnoteId;
 	}
 
-	@JsonIgnore
 	public String getCreditnoteId()
 	{
 		return creditnoteId;
@@ -257,109 +305,91 @@ public class Creditnote extends Resource
 		return customerCode;
 	}
 
-	@JsonProperty
 	public void setCustomerName(String customerName)
 	{
 		this.customerName = customerName;
 	}
 
-	@JsonIgnore
 	public String getCustomerName()
 	{
 		return customerName;
 	}
 
-	@JsonProperty
 	public void setTotal(String total)
 	{
 		this.total = total;
 	}
 
-	@JsonIgnore
 	public String getTotal()
 	{
 		return total;
 	}
 
-	@JsonProperty
 	public void setBalance(String balance)
 	{
 		this.balance = balance;
 	}
 
-	@JsonIgnore
 	public String getBalance()
 	{
 		return balance;
 	}
 
-	@JsonProperty
 	public void setCreditnoteItems(List<CreditnoteItem> creditnoteItems)
 	{
 		this.creditnoteItems = creditnoteItems;
 	}
 
-	@JsonIgnore
 	public List<CreditnoteItem> getCreditnoteItems()
 	{
 		return creditnoteItems;
 	}
 
-	@JsonProperty
 	public void setInvoices(List<Invoice> invoices)
 	{
 		this.invoices = invoices;
 	}
 
-	@JsonIgnore
 	public List<Invoice> getInvoices()
 	{
 		return invoices;
 	}
 
-	@JsonProperty
 	public void setCreatedTime(Date createdTime)
 	{
 		this.createdTime = createdTime;
 	}
 
-	@JsonIgnore
 	public Date getCreatedTime()
 	{
 		return createdTime;
 	}
 
-	@JsonProperty
 	public void setUpdatedTime(String updatedTime)
 	{
 		this.updatedTime = updatedTime;
 	}
 
-	@JsonIgnore
 	public String getUpdatedTime()
 	{
 		return updatedTime;
 	}
 
-	@JsonIgnore
 	public String getCreditnoteNumber()
 	{
 		return creditnoteNumber;
 	}
 
-	@JsonProperty
 	public void setCreditnoteNumber(String creditnoteNumber)
 	{
 		this.creditnoteNumber = creditnoteNumber;
 	}
 
-	@JsonIgnore
 	public String getCustomerId()
 	{
 		return customerId;
 	}
 
-	@JsonProperty
 	public void setCustomerId(String customerId)
 	{
 		this.customerId = customerId;
@@ -402,17 +432,70 @@ public class Creditnote extends Resource
 	}
 
 	@JsonIgnore
-	public Long getCurrencySymbol()
+	public String getCurrencySymbol()
 	{
 		return currencySymbol;
 	}
 
 	@JsonProperty
-	public void setCurrencySymbol(Long currencySymbol)
+	public void setCurrencySymbol(String currencySymbol)
 	{
 		this.currencySymbol = currencySymbol;
 	}
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	public static class Mail extends Resource
+	{
+		List<String> toMailIds;
+
+		List<String> ccMailIds;
+
+		String subject;
+
+		String body;
+
+		public void setToMailIds(List<String> toMailIds)
+		{
+			this.toMailIds = toMailIds;
+		}
+
+		public List<String> getToMailIds()
+		{
+			return toMailIds;
+		}
+
+		public void setCcMailIds(List<String> ccMailIds)
+		{
+			this.ccMailIds = ccMailIds;
+		}
+
+		public List<String> getCcMailIds()
+		{
+			return ccMailIds;
+		}
+
+		public void setSubject(String subject)
+		{
+			this.subject = subject;
+		}
+
+		public String getSubject()
+		{
+			return subject;
+		}
+
+		public String getBody()
+		{
+			return body;
+		}
+
+		public void setBody(String body)
+		{
+			this.body = body;
+		}
+	}
+
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Autotransaction extends Resource
 	{
 		@JsonIgnore
@@ -522,78 +605,160 @@ public class Creditnote extends Resource
 
 	}
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class CreditnoteItem extends Resource
 	{
-		@JsonIgnore
 		String itemId;
 
-		@JsonIgnore
+		String code;
+
 		String description;
 
-		@JsonIgnore
 		String quantity;
 
-		@JsonIgnore
 		BigDecimal price;
 
-		@JsonIgnore
 		BigDecimal itemTotal;
 
-		@JsonProperty
+		List<Tag>tags;
+
+		List<CustomField> itemCustomFields;
+
+		String name;
+
+		Integer type;
+
+		String accountId;
+
+		String accountName;
+
+		String taxId;
+
+		public String getTaxId()
+		{
+			return taxId;
+		}
+
+		public void setTaxId(String taxId)
+		{
+			this.taxId = taxId;
+		}
+
+		public String getAccountName()
+		{
+			return accountName;
+		}
+
+		public void setAccountName(String accountName)
+		{
+			this.accountName = accountName;
+		}
+
+		public String getAccountId()
+		{
+			return accountId;
+		}
+
+		public void setAccountId(String accountId)
+		{
+			this.accountId = accountId;
+		}
+
+		public Integer getType()
+		{
+			return type;
+		}
+
+		public void setType(Integer type)
+		{
+			this.type = type;
+		}
+
+		public void setName(String name)
+		{
+			this.name = name;
+		}
+
+		public String getName()
+		{
+			return name;
+		}
+
+		public List<CustomField> getItemCustomFields()
+		{
+			return itemCustomFields;
+		}
+
+		public void setItemCustomFields(List<CustomField> itemCustomFields)
+		{
+			this.itemCustomFields = itemCustomFields;
+		}
+
+		public void setTags(List<Tag> tags)
+		{
+			this.tags = tags;
+		}
+
+		public List<Tag> getTags()
+		{
+			return tags;
+		}
+
+		public String getCode()
+		{
+			return code;
+		}
+
+		public void setCode(String code)
+		{
+			this.code = code;
+		}
+
 		public void setItemId(String itemId)
 		{
 			this.itemId = itemId;
 		}
 
-		@JsonIgnore
 		public String getItemId()
 		{
 			return itemId;
 		}
 
-		@JsonProperty
 		public void setDescription(String description)
 		{
 			this.description = description;
 		}
 
-		@JsonIgnore
 		public String getDescription()
 		{
 			return description;
 		}
 
-		@JsonProperty
 		public void setQuantity(String quantity)
 		{
 			this.quantity = quantity;
 		}
 
-		@JsonIgnore
 		public String getQuantity()
 		{
 			return quantity;
 		}
 
-		@JsonProperty
 		public void setPrice(BigDecimal price)
 		{
 			this.price = price;
 		}
 
-		@JsonIgnore
 		public BigDecimal getPrice()
 		{
 			return price;
 		}
 
-		@JsonProperty
 		public void setItemTotal(BigDecimal itemTotal)
 		{
 			this.itemTotal = itemTotal;
 		}
 
-		@JsonIgnore
 		public BigDecimal getItemTotal()
 		{
 			return itemTotal;
@@ -601,48 +766,52 @@ public class Creditnote extends Resource
 
 	}
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Invoice extends Resource
 	{
-		@JsonIgnore
 		String invoiceId;
 
-		@JsonIgnore
 		String invoiceNumber;
 
-		@JsonIgnore
 		BigDecimal amount;
 
-		@JsonProperty
+		BigDecimal amountApplied;
+
+		public void setAmountApplied(BigDecimal amountApplied)
+		{
+			this.amountApplied = amountApplied;
+		}
+
+		public BigDecimal getAmountApplied()
+		{
+			return amountApplied;
+		}
+
 		public void setInvoiceId(String invoiceId)
 		{
 			this.invoiceId = invoiceId;
 		}
 
-		@JsonIgnore
 		public String getInvoiceId()
 		{
 			return invoiceId;
 		}
 
-		@JsonProperty
 		public void setInvoiceNumber(String invoiceNumber)
 		{
 			this.invoiceNumber = invoiceNumber;
 		}
 
-		@JsonIgnore
 		public String getInvoiceNumber()
 		{
 			return invoiceNumber;
 		}
 
-		@JsonProperty
 		public void setAmount(BigDecimal amount)
 		{
 			this.amount = amount;
 		}
 
-		@JsonIgnore
 		public BigDecimal getAmount()
 		{
 			return amount;

@@ -14,6 +14,8 @@ public class Activity
 
 	Date activityTime;
 
+	String commentedBy;
+
 	public String getActivityId()
 	{
 		return activityId;
