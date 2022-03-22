@@ -77,7 +77,7 @@ public class Organization extends Resource
 	@JsonIgnore
 	String paymentsUrl;
 	@JsonIgnore
-	List<Organization.Customfield> customFields;
+	List<CustomField> customFields;
 	@JsonIgnore
 	String isLogoUploaded;
 	@JsonIgnore
@@ -116,11 +116,6 @@ public class Organization extends Resource
 	public static Organization retrieve(String id) throws ZSAPIException
 	{
 		return ResourceUtil.process(RequestMethod.GET, instancePath(Organization.class, id), Organization.class);
-	}
-
-	public static Organization create(Organization organization) throws ZSAPIException
-	{
-		return ResourceUtil.process(RequestMethod.POST, classPath(Organization.class), Organization.class, organization);
 	}
 
 	public static Organization update(Organization organization, String id) throws ZSAPIException
@@ -642,13 +637,13 @@ public class Organization extends Resource
 	}
 
 	@JsonIgnore
-	public List<Organization.Customfield> getCustomFields()
+	public List<CustomField> getCustomFields()
 	{
 		return customFields;
 	}
 
 	@JsonProperty
-	public void setCustomFields(List<Organization.Customfield> customFields)
+	public void setCustomFields(List<CustomField> customFields)
 	{
 		this.customFields = customFields;
 	}
@@ -777,42 +772,4 @@ public class Organization extends Resource
 		}
 	}
 
-	public static class Customfield
-	{
-		String index;
-
-		String value;
-
-		String label;
-
-		public String getIndex()
-		{
-			return index;
-		}
-
-		public String getValue()
-		{
-			return value;
-		}
-
-		public String getLabel()
-		{
-			return label;
-		}
-
-		public void setIndex(String index)
-		{
-			this.index = index;
-		}
-
-		public void setValue(String value)
-		{
-			this.value = value;
-		}
-
-		public void setLabel(String label)
-		{
-			this.label = label;
-		}
-	}
 }

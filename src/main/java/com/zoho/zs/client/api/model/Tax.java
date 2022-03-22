@@ -2,6 +2,9 @@ package com.zoho.zs.client.api.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tax {
 	String taxId;
 	String taxName;

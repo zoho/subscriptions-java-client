@@ -790,46 +790,46 @@ public class Payment extends Resource
 		@JsonIgnore
 		String gatewayErrorMessage;
 		@JsonIgnore
-		String card_id;
+		String cardId;
 		@JsonIgnore
-		String expiry_month;
+		String expiryMonth;
 		@JsonIgnore
-		String expiry_year;
+		String expiryYear;
 
 		@JsonIgnore
-		public String getCard_id()
+		public String getCardId()
 		{
-			return card_id;
+			return cardId;
 		}
 
 		@JsonProperty
-		public void setCard_id(String card_id)
+		public void setCardId(String cardId)
 		{
-			this.card_id = card_id;
+			this.cardId = cardId;
 		}
 
 		@JsonIgnore
-		public String getExpiry_month()
+		public String getExpiryMonth()
 		{
-			return expiry_month;
+			return expiryMonth;
 		}
 
 		@JsonProperty
-		public void setExpiry_month(String expiry_month)
+		public void setExpiryMonth(String expiryMonth)
 		{
-			this.expiry_month = expiry_month;
+			this.expiryMonth = expiryMonth;
 		}
 
 		@JsonIgnore
-		public String getExpiry_year()
+		public String getExpiryYear()
 		{
-			return expiry_year;
+			return expiryYear;
 		}
 
 		@JsonProperty
-		public void setExpiry_year(String expiry_year)
+		public void setExpiryYear(String expiryYear)
 		{
-			this.expiry_year = expiry_year;
+			this.expiryYear = expiryYear;
 		}
 
 		@JsonProperty
