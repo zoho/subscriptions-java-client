@@ -13,10 +13,10 @@ Import the Zoho Subscriptions Java Client Library to your project
 ### Setup
 
 
-> **SetUp Organization ID and OAuth Access Token**
+**SetUp Organization ID and OAuth Access Token**
     
-    1. Get Organization Id <a href="https://www.zoho.com/subscriptions/api/v1/#organization-id">refer</a>
-    2. Generate oauth token using <a href="https://www.zoho.com/subscriptions/api/v1/#oauth">API Reference</a>
+1. Get Organization Id <a href="https://www.zoho.com/subscriptions/api/v1/#organization-id">refer</a>
+2. Generate oauth token using <a href="https://www.zoho.com/subscriptions/api/v1/#oauth">API Reference</a>
 
 ##### Sample Code:
 
