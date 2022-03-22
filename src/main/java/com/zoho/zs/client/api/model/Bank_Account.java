@@ -2,13 +2,21 @@
 package com.zoho.zs.client.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zoho.zs.client.api.exception.ZSAPIException;
+import com.zoho.zs.client.api.net.GenericListParams;
+import com.zoho.zs.client.api.net.ListResponse;
 import com.zoho.zs.client.api.net.Resource;
+import com.zoho.zs.client.api.net.ResourceUtil;
 
-public class BankAccount extends Resource
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Bank_Account extends Resource
 {
-	String paymentGateway;
+	String gateway;
+
 	String cardNumber;
+
 	String cvvNumber;
 
 	String accountNumber;
@@ -25,14 +33,28 @@ public class BankAccount extends Resource
 
 	String acceptLicense;
 
-	@JsonIgnore
 	String accountId;
 
-	@JsonIgnore
 	String lastFourDigits;
 
-	@JsonIgnore
 	String subscriptionCount;
+
+	String customerId;
+
+	String customerName;
+
+	String status;
+
+	public static ListResponse<Bank_Account> retrieve(String customerId,String AccountId) throws ZSAPIException
+	{
+		GenericListParams params = null;
+		return ResourceUtil.list(RequestMethod.GET,instancePath(Customer.class,customerId)+"/bankaccounts/"+AccountId,Bank_Account.class,params);
+	}
+	public static void delete(String customerId,String AccountId) throws ZSAPIException
+	{
+		ResourceUtil.process(RequestMethod.DELETE, instancePath(Customer.class, customerId)+"/bankaccounts/"+AccountId, Bank_Account.class);
+	}
+
 
 	public String getCvvNumber()
 	{
@@ -54,14 +76,14 @@ public class BankAccount extends Resource
 		this.cardNumber = cardNumber;
 	}
 
-	public String getPaymentGateway()
+	public String getGateway()
 	{
-		return paymentGateway;
+		return gateway;
 	}
 
-	public void setPaymentGateway(String paymentGateway)
+	public void setGateway(String gateway)
 	{
-		this.paymentGateway = paymentGateway;
+		this.gateway = gateway;
 	}
 
 	public String getAccountNumber()
@@ -134,39 +156,63 @@ public class BankAccount extends Resource
 		this.acceptLicense = acceptLicense;
 	}
 
-	@JsonIgnore
 	public String getAccountId()
 	{
 		return accountId;
 	}
 
-	@JsonProperty
 	public void setAccountId(String accountId)
 	{
 		this.accountId = accountId;
 	}
 
-	@JsonIgnore
 	public String getLastFourDigits()
 	{
 		return lastFourDigits;
 	}
 
-	@JsonProperty
 	public void setLastFourDigits(String lastFourDigits)
 	{
 		this.lastFourDigits = lastFourDigits;
 	}
 
-	@JsonIgnore
 	public String getSubscriptionCount()
 	{
 		return subscriptionCount;
 	}
 
-	@JsonProperty
 	public void setSubscriptionCount(String subscriptionCount)
 	{
 		this.subscriptionCount = subscriptionCount;
 	}
+	public void setCustomerName(String customerName)
+	{
+		this.customerName = customerName;
+	}
+
+	public String getCustomerName()
+	{
+		return customerName;
+	}
+
+	public void setCustomerId(String customerId)
+	{
+		this.customerId = customerId;
+	}
+
+	public String getCustomerId()
+	{
+		return customerId;
+	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status = status;
+	}
+
 }
