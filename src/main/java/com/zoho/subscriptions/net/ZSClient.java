@@ -37,7 +37,7 @@ public class ZSClient
 		ZSClient.version = version;
 	}
 
-	public static void setAuthtoken(String oauthtoken) throws Exception
+	public static void setOauthtoken(String oauthtoken) throws Exception
 	{
 		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{
@@ -71,7 +71,7 @@ public class ZSClient
 		return "https://" + getHost() + "/api/" + getVersion();
 	}
 
-	protected static String getAuthtoken() throws Exception
+	protected static String getOauthtoken() throws Exception
 	{
 		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{

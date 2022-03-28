@@ -27,7 +27,7 @@ public class Main {
     public static void main (String args[]) throws Exception
     {
         ZSClient object = new ZSClient();
-        object.setAuthtoken("{{Zoho Subscriptions Oauth Token}}");
+        object.setOauthtoken("{{Zoho Subscriptions Oauth Token}}");
         object.setOrganizationId("{{Zoho Organization ID}}");
     }
 }</code></pre>
@@ -47,7 +47,7 @@ public class Main {
     public static void main (String args[]) throws Exception
     {
         ZSClient object = new ZSClient();
-        object.setAuthtoken("{{Zoho Subscriptions Oauth Token}}");
+        object.setOauthtoken("{{Zoho Subscriptions Oauth Token}}");
         object.setOrganizationId("{{Zoho Organization ID}}");
         ObjectMapper mapper = new ObjectMapper();
         Customer customer=new Customer();
