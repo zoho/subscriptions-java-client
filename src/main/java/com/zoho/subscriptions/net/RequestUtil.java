@@ -137,7 +137,7 @@ public class RequestUtil
 		connection.setRequestProperty("Accept-Charset", ZSClient.CHARSET);
 		connection.setRequestProperty("Accept", ZSClient.DEFAULT_ACCEPT_HEADER);
 		connection.setRequestProperty("User-Agent", ZSClient.getUserAgentName());
-		connection.setRequestProperty("Authorization", "Zoho-oauthtoken " + ZSClient.getAuthtoken());
+		connection.setRequestProperty("Authorization", "Zoho-oauthtoken " + ZSClient.getOauthtoken());
 		connection.setRequestProperty("X-com-zoho-subscriptions-organizationid", ZSClient.getOrganizationId());
 		return connection;
 	}
