@@ -41,7 +41,7 @@ public class ZSClient
 	{
 		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{
-			throw new Exception("AuthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
+			throw new Exception("OauthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
 		}
 		ZSClient.oauthtoken = oauthtoken;
 	}
@@ -75,7 +75,7 @@ public class ZSClient
 	{
 		if (oauthtoken == null || oauthtoken.trim().isEmpty())
 		{
-			throw new APIConnectionException("AuthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
+			throw new APIConnectionException("OauthToken to speak with Zoho Subscriptions is not set. Please set the oauthtoken in System property");
 		}
 		return oauthtoken;
 	}
