@@ -48,11 +48,19 @@ public class RequestUtil
 	private static Response execute(RequestMethod method, String path, Resource classObj, Class clazz, GenericParams params) throws ZSAPIException
 	{
 		HttpURLConnection connection = null;
-
 		String url = String.format("%s/%s", ZSClient.getBaseUrl(), path);
 		try
 		{
-			String queryStr = constructQuery(classObj, params);
+			String queryStr="";
+			if(path.endsWith("cancel"))
+			{
+				String json = new ObjectMapper().writeValueAsString(params.getQueryParams());
+				queryStr="JSONString="+json;
+			}
+			else
+			{
+				queryStr = constructQuery(classObj, params);
+			}
 
 			switch (method)
 			{
@@ -96,8 +104,14 @@ public class RequestUtil
 	private static HttpURLConnection createWriteConnection(RequestMethod method, String reqUrl, String qryStr) throws Exception
 	{
 		HttpURLConnection connection = createConnection(method, reqUrl);
-
-		connection.setRequestProperty("Content-Type", "application/json");
+		if(reqUrl.endsWith("/cancel"))
+		{
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		}
+		else
+		{
+			connection.setRequestProperty("Content-Type", "application/json");
+		}
 		connection.setDoOutput(true);
 
 		writeQueryString(connection, qryStr);
