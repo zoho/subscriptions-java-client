@@ -247,16 +247,14 @@ public class Subscription extends Resource
 		return ResourceUtil.process(RequestMethod.POST, instancePath(Subscription.class, id) + "/buyonetimeaddon", Invoice.class, subscription);
 	}
 
-	public static Subscription cancelAtEnd(String id) throws ZSAPIException
+	public static Subscription cancelAtEnd(String id,QueryParams params) throws ZSAPIException
 	{
-		QueryParams params = new QueryParams();
 		params.set("cancel_at_end", true);
 		return ResourceUtil.process(RequestMethod.POST, instancePath(Subscription.class, id) + "/cancel", Subscription.class, params);
 	}
 
-	public static Subscription cancelNow(String id) throws ZSAPIException
+	public static Subscription cancelNow(String id,QueryParams params) throws ZSAPIException
 	{
-		QueryParams params = new QueryParams();
 		params.set("cancel_at_end", false);
 		return ResourceUtil.process(RequestMethod.POST, instancePath(Subscription.class, id) + "/cancel", Subscription.class, params);
 	}
@@ -1156,7 +1154,7 @@ public class Subscription extends Resource
 
 		static String name;
 
-		BigDecimal discound;
+		BigDecimal discount;
 
 		BigDecimal price;
 
@@ -1190,7 +1188,7 @@ public class Subscription extends Resource
 
 		List<Tag> tags;
 
-		List<CustomField> customFields;
+		List<CustomField> itemCustomFields;
 
 		@JsonIgnore
 		String isTaxable;
@@ -1222,7 +1220,7 @@ public class Subscription extends Resource
 
 		public void setName(String name)
 		{
-			this.name = name;
+			Plan.name = name;
 		}
 
 		public String getName()
@@ -1250,14 +1248,14 @@ public class Subscription extends Resource
 			return total;
 		}
 
-		public void setDiscound(BigDecimal discound)
+		public void setDiscount(BigDecimal discount)
 		{
-			this.discound = discound;
+			this.discount = discount;
 		}
 
-		public BigDecimal getDiscound()
+		public BigDecimal getDiscount()
 		{
-			return discound;
+			return discount;
 		}
 
 		public void setQuantity(Integer quantity)
@@ -1476,14 +1474,14 @@ public class Subscription extends Resource
 			return tags;
 		}
 
-		public void setCustomFields(List<CustomField> customFields)
+		public void setItemCustomFields(List<CustomField> itemCustomFields)
 		{
-			this.customFields = customFields;
+			this.itemCustomFields = itemCustomFields;
 		}
 
-		public List<CustomField> getCustomFields()
+		public List<CustomField> getitemCustomFields()
 		{
-			return customFields;
+			return itemCustomFields;
 		}
 
 	}
@@ -1502,7 +1500,7 @@ public class Subscription extends Resource
 
 		String addonDescription;
 
-		BigDecimal discound;
+		BigDecimal discount;
 
 		BigDecimal total;
 
@@ -1510,7 +1508,7 @@ public class Subscription extends Resource
 		String taxExemptionId;
 		String taxExemptionCode;
 
-		List<CustomField> customFields;
+		List<CustomField> itemCustomFields;
 
 		List<Tag> tags;
 
@@ -1569,14 +1567,14 @@ public class Subscription extends Resource
 			return quantity;
 		}
 
-		public void setDiscound(BigDecimal discound)
+		public void setDiscount(BigDecimal discount)
 		{
-			this.discound = discound;
+			this.discount = discount;
 		}
 
-		public BigDecimal getDiscound()
+		public BigDecimal getDiscount()
 		{
-			return discound;
+			return discount;
 		}
 
 		public void setTotal(BigDecimal total)
@@ -1699,14 +1697,14 @@ public class Subscription extends Resource
 			this.productExemptionId = productExemptionId;
 		}
 
-		public void setCustomFields(List<CustomField> customFields)
+		public void setItemCustomFields(List<CustomField> itemCustomFields)
 		{
-			this.customFields = customFields;
+			this.itemCustomFields = itemCustomFields;
 		}
 
-		public List<CustomField> getCustomFields()
+		public List<CustomField> getItemCustomFields()
 		{
-			return customFields;
+			return itemCustomFields;
 		}
 
 		public void setTags(List<Tag> tags)
